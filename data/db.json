@@ -1,0 +1,28 @@
+{
+    "products":[
+        {
+            "id":10001,
+            "name": "Basics to Advanced In React",
+            "price":449,
+            "in_stock":true
+        },
+        {
+            "id":10002,
+            "name": "Malgudi Days",
+            "price":899,
+            "in_stock":true
+        },
+        {
+            "id":10003,
+            "name": "Train to Pakistan",
+            "price":249,
+            "in_stock":false
+        },
+        {
+            "id":10004,
+            "name": "The House Of Blue Mangoes",
+            "price":1999,
+            "in_stock":true
+        }
+    ]
+}

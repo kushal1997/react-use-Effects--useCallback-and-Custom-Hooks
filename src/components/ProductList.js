@@ -2,7 +2,7 @@ import { useState ,useEffect} from "react"
 
 export const ProductList = () => {
     const [products,setProducts]=useState([]);
-    console.log(products);
+    
     useEffect(()=>{
         fetch("http://localhost:8000/products")
         .then(response=>response.json())
@@ -10,6 +10,16 @@ export const ProductList = () => {
     },[])
     
   return (
-    <div>ProductList</div>
+    <section>
+      {products.map((product)=>(
+        <div className="card" key={product.id}>
+          <p className="id">{product.id}</p>
+          <p className="name">{product.name}</p>
+          <p  className="info">
+            <span>₹ {product.price}</span>
+            <span className={product.in_stock ? "available":"unavailable"}>{product.in_stock ? "Available":"Unavailable"}</span>
+          </p>
+        </div>))}
+    </section>
   )
 }

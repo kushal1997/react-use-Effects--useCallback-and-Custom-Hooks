@@ -21,7 +21,7 @@ export const ProductList = () => {
     //     setProducts(data);
     //   },[url]);
 
-    const {data:products,loading}=useFetch(url);
+    const {data:products,loading,error}=useFetch(url);
     
     
     // useEffect( ()=>{
@@ -36,11 +36,11 @@ export const ProductList = () => {
     <section>
       <div className="filter">
         {/* <button onClick={()=>setCounter(counter+1)}>{counter}</button> */}
-        <button className="all" onClick={()=> setUrl("http://localhost:8000/products")}>All</button>
+        <button className="all" onClick={()=> setUrl("http://localhost:8000/product")}>All</button>
         <button className="onlyAvailable" onClick={()=>setUrl("http://localhost:8000/products?in_stock=true")}>Available</button>
       </div>  
       {loading && <p className="loading"><img src={Loading} alt="" /></p>}
-      
+      {error && <p>{error}</p>}
       {products && products.map((product)=>(
         <div className="card" key={product.id}>
           <p className="id">{product.id}</p>

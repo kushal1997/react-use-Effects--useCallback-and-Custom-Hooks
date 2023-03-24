@@ -21,7 +21,7 @@ export const ProductList = () => {
     //     setProducts(data);
     //   },[url]);
 
-    const {data:products,loading,error}=useFetch(url);
+    const {data:products,loading,error}=useFetch(url,{content: "ABC"});
     
     
     // useEffect( ()=>{

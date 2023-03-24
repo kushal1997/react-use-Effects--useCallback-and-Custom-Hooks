@@ -1,7 +1,7 @@
 import { useState ,useEffect, useCallback} from "react"
-
+import { useFetch } from "../hooks/useFetch";
 export const ProductList = () => {
-    const [products,setProducts]=useState([]);
+    
     const[url,setUrl]=useState("http://localhost:8000/products");
     // useEffect(()=>{
     //   console.log(counter);
@@ -13,19 +13,21 @@ export const ProductList = () => {
     //     .then(response=>response.json())
     //     .then(data=>setProducts(data));
     // },[url])
-    const fetchProduct= useCallback(
-      async ()=>{
-        const response=await fetch(url);
-        const data=await response.json();
-        setProducts(data);
-      },[url]);
+    // const fetchProduct= useCallback(
+    //   async ()=>{
+    //     const response=await fetch(url);
+    //     const data=await response.json();
+    //     setProducts(data);
+    //   },[url]);
+
+    const {data:products}=useFetch(url);
     
     
-    useEffect( ()=>{
+    // useEffect( ()=>{
       
-      fetchProduct();
-      console.log("==============");
-    },[fetchProduct]);
+    //   fetchProduct();
+      
+    // },[fetchProduct]);
 
     
     
@@ -36,7 +38,7 @@ export const ProductList = () => {
         <button className="all" onClick={()=> setUrl("http://localhost:8000/products")}>All</button>
         <button className="onlyAvailable" onClick={()=>setUrl("http://localhost:8000/products?in_stock=true")}>Available</button>
       </div>  
-      {products.map((product)=>(
+      {products && products.map((product)=>(
         <div className="card" key={product.id}>
           <p className="id">{product.id}</p>
           <p className="name">{product.name}</p>

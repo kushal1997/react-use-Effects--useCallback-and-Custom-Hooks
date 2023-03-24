@@ -86,3 +86,7 @@ button.all {
   justify-content: space-evenly;
   align-items: center;
 }
+.loading{
+  margin: auto;
+  width: 200px;
+}
